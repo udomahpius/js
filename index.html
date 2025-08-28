@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My List App</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+        background-color: rgb(255, 255, 255);
+    }
+    .add-class{
+        display: none !important;
+    }
+    #demo, .demo-2 {
+        padding: 0;
+        /* border: 1px rgb(4, 84, 82) solid; */
+        color: rgb(9, 75, 95);
+        text-transform: capitalize;
+        height: auto;
+        font-size: 20px;
+    }
+
+    .errorMeg, .errorMeg2 {
+        color: brown;
+        transition: ease-in 5s;
+        font-size: 20px;
+    }
+
+    .list-class {
+        list-style-type:none;
+        background-color: rgb(223, 222, 222);
+        color: rgb(2, 2, 2);
+        margin-bottom: 10px;
+        padding: 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    .textLarge {
+        font-size: 30px;
+         background-color: rgba(2, 77, 61, 0.986);
+        color: rgb(255, 255, 255);
+        padding: 15px 5px;
+        font-size: 15px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .search-input input[type="text"] {
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        background-color: transparent;
+    }
+
+    .search-input {
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .container {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    button,
+    input {
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+    }
+
+
+    .search-bar {
+        border: 1px solid rgb(3, 50, 53);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        gap: auto;
+        border-top-left-radius: 50px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .addcart {
+       background-color: rgba(2, 77, 61, 0.986);
+        color: white;
+        padding: 15px 5px;
+        font-size: 15px;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .deletecart {
+        background-color: rgb(75, 2, 2);
+        color: white;
+        padding: 15px 5px;
+        font-size: 15px;
+        width: 100%;
+        text-align: left;
+
+    }
+
+    .button-element {
+        /* background-color: black; */
+        display: flex;
+        width: 100%;
+    }
+
+    .list-area {
+        /* line-height: -20; */
+        margin-top: 2rem;
+        justify-content: space-between;
+        display: flex;
+        /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+        /* border: 1px rgb(4, 84, 82) solid; */
+        /* padding-bottom: 10px 20px; */
+    }
+    .list-area .item-container{
+        width: 40%;
+    }
+    .list-area .save-item-container{
+        width: 40%;
+    }
+
+     .list-area button {
+        margin-bottom: 0;
+    }
+
+    .list-area h1 {
+        margin-top: 0;
+    }
+
+
+
+.cursor{
+    cursor: pointer;
+}
+  
+</style>
+
+<body>
+    <div class="container">
+        <span class="errorMeg"></span><br>
+        <div class="search-bar">
+            <div class="search-input">
+                <input type="text" id="inpuTElement" placeholder="Add Item...">
+            </div>
+            <div class="button-element">
+                <button onclick="myFunction()" class="addcart">Add to Item</button>
+                <button onclick="deleteItem()" class="deletecart">Delete Item</button>
+            </div>
+        </div>
+       
+            <div class="list-area hideme">
+                <div class="item-container">
+                    <button class="textLarge">Your List:</button>
+                  <h1 id="demo"></h1>
+                </div>
+                <div class="save-item-container">
+                     <button type="button" class="textLarge save-item-btn cursor" onclick="saveItem()">Click to Save:</button>
+                     <span class="errorMeg2"></span>
+                    <h1 class="demo-2"></h1>
+                </div>
+            </div>
+    
+    </div>
+
+
+    <script>
+
+        let inputElement = document.querySelector("#inpuTElement");
+        let addItemElement = document.getElementById("demo")
+        let errorMeg = "You have Not added any Item!"
+        let errorMeg2 = "You have Not added New Item!"
+        document.querySelector(".hideme").classList.add("add-class")
+        
+
+
+        const myArrayItem = [];
+        const pushItem = ((disAllowedDefault) => {
+            if (inputElement.value == []) {
+                document.querySelector(".errorMeg").innerHTML = errorMeg
+                disAllowedDefault.preventDefault()
+            } else {
+                myArrayItem.push(inputElement.value);
+                let elementText = "<ul>";
+                myArrayItem.forEach(myFunction);
+                elementText += "</ul>";
+                function myFunction(arrayValues) {
+                    elementText = "<li class='list-class'>" + arrayValues + "</li>";
+                }
+                addItemElement.innerHTML += elementText
+                inputElement.value = []
+                document.querySelector(".errorMeg").innerHTML = []
+                document.querySelector(".hideme").classList.remove("add-class")
+            }
+
+        })
+
+
+        function myFunction() {
+            pushItem()
+        }
+       
+        function saveItem(notAllowed){
+            if(myArrayItem.length == []){
+               document.querySelector(".errorMeg2").innerHTML = errorMeg2
+                 notAllowed.preventDefault()
+                  
+            }else{
+                 let saveArray = "<ul>"
+                 myArrayItem.map((arrayParameter) =>{
+                saveArray =`<li class='list-class'> ${arrayParameter}</li>`;
+                document.querySelector(".demo-2").innerHTML += saveArray
+            });
+                saveArray += "</ul>";
+            
+            myArrayItem.length = []
+            document.querySelector(".errorMeg2").innerHTML = []
+
+
+            } 
+           
+        }
+
+
+         function deleteItem() {
+               myArrayItem.length = []
+               addItemElement.innerHTML = []
+            //    document.querySelector(".hideme").classList.add("add-class")
+           
+        }
+    </script>
+</body>
+
+</html
