@@ -71,14 +71,15 @@
         padding: 5px;
         margin:8px;
     }
-    .add-class{
+    .add-class-min{
         display: block ;
+        
     }
     .list-area .item-container{
-        width: 100%;
+        width: 100% !important;
     }
     .list-area .save-item-container{
-        width: 100%;
+        width: 100% !important;
     }
 }
     button,
@@ -171,7 +172,7 @@
             </div>
         </div>
        
-            <div class="list-area hideme">
+            <div class="list-area hideme hideme-2">
                 <div class="item-container">
                     <button class="textLarge">Your List:</button>
                   <h1 id="demo"></h1>
@@ -193,6 +194,7 @@
         let errorMeg = "You have Not added any Item!"
         let errorMeg2 = "You have Not added New Item!"
         document.querySelector(".hideme").classList.add("add-class")
+        document.querySelector(".hideme-2").classList.remove("add-class-min")
         
 
 
@@ -213,6 +215,7 @@
                 inputElement.value = []
                 document.querySelector(".errorMeg").innerHTML = []
                 document.querySelector(".hideme").classList.remove("add-class")
+                 document.querySelector(".hideme-2").classList.add("add-class-min")
             }
 
         })
