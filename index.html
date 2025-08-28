@@ -171,8 +171,8 @@
                 <button onclick="deleteItem()" class="deletecart">Delete Item</button>
             </div>
         </div>
-       
-            <div class="list-area hideme hideme-2">
+       <div class="hideme hideme-2">
+            <div class="list-area ">
                 <div class="item-container">
                     <button class="textLarge">Your List:</button>
                   <h1 id="demo"></h1>
@@ -182,11 +182,14 @@
                      <span class="errorMeg2"></span>
                     <h1 class="demo-2"></h1>
                 </div>
+                
             </div>
+            <button style="text-align: center;" type="button" class="textLarge save-item-btn cursor" onclick="closeItem()">Close Menu</button>
+       </div>
     
     </div>
 
-
+ 
     <script>
 
         let inputElement = document.querySelector("#inpuTElement");
@@ -252,6 +255,10 @@
                addItemElement.innerHTML = []
             //    document.querySelector(".hideme").classList.add("add-class")
            
+        }
+
+        function closeItem(){
+            document.querySelector(".hideme").classList.add("add-class")
         }
     </script>
 </body>
