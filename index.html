@@ -167,8 +167,8 @@
                 <input type="text" id="inpuTElement" placeholder="Add Item...">
             </div>
             <div class="button-element">
-                <button onclick="myFunction()" class="addcart">Add to Item</button>
-                <button onclick="deleteItem()" class="deletecart">Delete Item</button>
+                <button onclick="myFunction()" class="addcart">Submit</button>
+                <button onclick="deleteItem()" class="deletecart">Delete</button>
             </div>
         </div>
       
@@ -193,7 +193,7 @@
 
         let inputElement = document.querySelector("#inpuTElement");
         let addItemElement = document.getElementById("demo")
-        let errorMeg = "You have Not added any Item!"
+        let errorMeg = "Can Not submit an Empty Field"
         let errorMeg2 = "You have Not added New Item!"
         document.querySelector(".hideme").classList.add("add-class")
          document.querySelector(".btnele").classList.add("hidebtn")
