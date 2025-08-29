@@ -17,6 +17,7 @@
         background-position:100%;
         background-size: cover;
         background-blend-mode: soft-light;
+        background-attachment: fixed;
     }
     .add-class, .hidebtn{
         display: none !important;
@@ -117,9 +118,12 @@
         justify-content: space-between;
         /* width: 100%; */
         padding-left: 20px;
-        /* padding-right: 20px; */
         height: 100%;
         gap:auto;
+         z-index: 1000;
+        /* filter: blur(1px); */
+        /* backdrop-filter: blur(90px); */
+        background-color: rgba(0, 0, 0, 0.068);
         border-radius: 50px;
         box-shadow: rgba(243, 243, 243, 0.2) 0px 7px 29px 0px;
     }
@@ -183,11 +187,25 @@
 .cursor{
     cursor: pointer;
 }
+
+.header{
+    text-align: center;
+    background-color: #ffffffd7;
+    margin-top: 0;
+    position: fixed;
+    width: 100%;
+    padding: 1.2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    color: #012020;
+    z-index: 1000;
+}
   
 </style>
 
 <body>
-    <div class="contain">
+    <h1 class="header">Make List</h1>
+    <div class="contain" style="padding-top: 5rem;">
     <div class="container">
         <span class="errorMeg"></span><br>
         <div class="search-bar">
@@ -195,7 +213,7 @@
                 <input type="text" id="inpuTElement" placeholder="Add Item...">
             </div>
             <div class="button-element">
-                <button onclick="myFunction()" class="addcart">Submit</button>
+                <button onclick="myFunction()" class="addcart">Add</button>
                 <button onclick="deleteItem()" class="deletecart">Delete</button>
             </div>
         </div>
@@ -284,7 +302,7 @@
 
          function deleteItem() {
                myArrayItem.length = []
-               addItemElement.innerHTML = []
+               document.querySelector(".demo-2").innerHTML = []
            
         }
 
